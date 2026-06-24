@@ -125,7 +125,7 @@
 
                 <!-- High-Fi Official Image Asset Integration -->
                 <div class="flex justify-center mb-6">
-                    <img src="./logo-sinergi.png" alt="Logo Resmi Sinergi 2026" class="max-w-xs sm:max-w-sm rounded-2xl shadow-2xl border border-slate-800/80 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f172a/eab308?text=SINERGI+2026'">
+                    <img src="logo-sinergi.png" alt="Logo Resmi Sinergi 2026" class="max-w-xs sm:max-w-sm rounded-2xl shadow-2xl border border-slate-800/80 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f172a/eab308?text=SINERGI+2026'">
                 </div>
 
                 <div class="mx-auto max-w-lg mb-4 flex flex-col items-center">
@@ -552,6 +552,7 @@
         // Official Standings Raw Data containing achievements per class
         // Diperbarui dengan hasil Free Fire (X TSM 1: Gold, X TKR 2: Silver, X TSM 2: Bronze)
         // Serta hasil eFootball (XI TSM 1: Gold, X TKR 1: Silver, XI TKR 2: Bronze)
+        // Dan hasil Futsal Putri (X RPL 1: Gold, XI RPL 1: Silver, X RPL 2: Bronze)
         const STANDINGS_RAW = [
             {
                 name: "X TKR 2", grade: "X", major: "TKR",
@@ -576,10 +577,17 @@
                 }
             },
             {
+                name: "X RPL 1", grade: "X", major: "RPL",
+                achievements: {
+                    futsalPi: "gold" // Juara 1 Futsal Putri
+                }
+            },
+            {
                 name: "X RPL 2", grade: "X", major: "RPL",
                 achievements: {
                     ranking1: "silver",
-                    estafet: "bronze"
+                    estafet: "bronze",
+                    futsalPi: "bronze" // Juara 3 Futsal Putri
                 }
             },
             {
@@ -598,7 +606,8 @@
             {
                 name: "XI RPL 1", grade: "XI", major: "RPL",
                 achievements: {
-                    vocal: "bronze"
+                    vocal: "bronze",
+                    futsalPi: "silver" // Juara 2 Futsal Putri
                 }
             },
             {
@@ -613,7 +622,6 @@
                     ff: "bronze" // Juara 3 Free Fire
                 }
             },
-            { name: "X RPL 1", grade: "X", major: "RPL", achievements: {} },
             { name: "XI RPL 2", grade: "XI", major: "RPL", achievements: {} },
             { name: "XI RPL 3", grade: "XI", major: "RPL", achievements: {} }
         ];
