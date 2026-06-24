@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINERGI 2026 - Portal Klasemen Olimpiade SMK Assalaam</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sinergiBlue: {
+                            light: '#3b82f6',
+                            DEFAULT: '#0f172a',
+                            dark: '#020617',
+                        },
+                        sinergiYellow: {
+                            light: '#fde047',
+                            DEFAULT: '#eab308',
+                            dark: '#ca8a04',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #eab308;
+        }
+        .medal-glow-gold {
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.15);
+        }
+        .medal-glow-silver {
+            box-shadow: 0 0 15px rgba(148, 163, 184, 0.15);
+        }
+        .medal-glow-bronze {
+            box-shadow: 0 0 15px rgba(180, 83, 9, 0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-sinergiYellow selection:text-sinergiBlue-dark">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-sinergiBlue-dark/95 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Brand Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative w-10 h-10 flex items-center justify-center bg-slate-900 rounded-lg border border-slate-700 overflow-hidden shrink-0">
+                        <div class="absolute -top-1 w-8 h-8 rounded-full bg-sinergiYellow opacity-80"></div>
+                        <div class="relative flex space-x-0.5 z-10 pt-2">
+                            <span class="w-1.5 h-4 bg-blue-600 rounded-full transform -rotate-12"></span>
+                            <span class="w-1.5 h-6 bg-blue-500 rounded-full transform -translate-y-1"></span>
+                            <span class="w-1.5 h-4 bg-yellow-500 rounded-full transform rotate-12"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-base sm:text-lg font-extrabold tracking-wider text-white">SINERGI <span class="text-sinergiYellow">2026</span></span>
+                        <p class="text-[9px] tracking-widest text-slate-400 font-semibold uppercase block sm:hidden">SMK Assalaam</p>
+                        <p class="text-[10px] tracking-widest text-slate-400 font-semibold uppercase hidden sm:block">SMK ASSALAAM BANDUNG</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex space-x-1 bg-slate-900/80 p-1 rounded-xl border border-slate-800">
+                    <button onclick="switchTab('home')" id="tab-home" class="tab-btn px-3 py-2 sm:px-5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 bg-sinergiYellow text-sinergiBlue-dark shadow-lg shadow-sinergiYellow/10">
+                        <span class="flex items-center gap-1.5">
+                            <i data-lucide="home" class="w-4 h-4"></i> <span>Beranda</span>
+                        </span>
+                    </button>
+                    <button onclick="switchTab('klasemen')" id="tab-klasemen" class="tab-btn px-3 py-2 sm:px-5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg text-slate-400 hover:text-white transition-all duration-200">
+                        <span class="flex items-center gap-1.5">
+                            <i data-lucide="trophy" class="w-4 h-4"></i> <span>Klasemen</span>
+                        </span>
+                    </button>
+                    <button onclick="switchTab('cabang')" id="tab-cabang" class="tab-btn px-3 py-2 sm:px-5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg text-slate-400 hover:text-white transition-all duration-200">
+                        <span class="flex items-center gap-1.5">
+                            <i data-lucide="award" class="w-4 h-4"></i> <span>Cabang</span>
+                        </span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        
+        <!-- SECTION 1: HOME / BERANDA -->
+        <section id="section-home" class="space-y-10 animate-fade-in">
+            <!-- Hero Banner -->
+            <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 border border-slate-800/80 py-12 px-6 sm:px-12 lg:py-16 text-center">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(234,179,8,0.06),transparent_50%)]"></div>
+                <div class="absolute -bottom-48 -left-48 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+                
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full text-[10px] sm:text-xs font-semibold text-yellow-400 mb-6 uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span> Format Klasemen Medali Olimpiade Resmi
+                </div>
+
+                <div class="mx-auto max-w-lg mb-6 flex flex-col items-center">
+                    <!-- SVG Sinergi 2026 Dynamic Emblem -->
+                    <div class="relative w-40 h-40 mb-4">
+                        <div class="absolute top-4 left-6 w-28 h-28 rounded-full bg-gradient-to-tr from-yellow-500 to-yellow-300 opacity-90 shadow-2xl shadow-yellow-500/20"></div>
+                        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50,90 Q70,95 85,110 L68,145 Q62,115 50,90 Z" fill="#1d4ed8"/>
+                            <circle cx="72" cy="88" r="8" fill="#1d4ed8" />
+                            <path d="M40,80 Q60,82 72,88 Q65,100 50,115" stroke="#1d4ed8" stroke-width="4" stroke-linecap="round"/>
+                            
+                            <path d="M100,75 C85,90 85,130 100,165 C115,130 115,90 100,75 Z" fill="#2563eb"/>
+                            <circle cx="100" cy="65" r="9" fill="#2563eb" />
+                            <path d="M78,65 Q100,82 122,65" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
+                            
+                            <path d="M150,90 Q130,95 115,110 L132,145 Q138,115 150,90 Z" fill="#eab308"/>
+                            <circle cx="128" cy="88" r="8" fill="#eab308" />
+                            <path d="M160,80 Q140,82 128,88 Q135,100 150,115" stroke="#eab308" stroke-width="4" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <h1 class="text-5xl sm:text-6xl font-black italic tracking-tighter text-slate-100 flex items-center justify-center gap-1">
+                        <span class="text-blue-500">SIN</span>
+                        <span class="text-yellow-400 relative">
+                            ERGI
+                            <span class="absolute -bottom-1 left-0 w-full h-1 bg-yellow-400 rounded-full"></span>
+                        </span>
+                    </h1>
+                    
+                    <div class="mt-3 flex items-center gap-4">
+                        <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-blue-500"></div>
+                        <span class="text-2xl sm:text-3xl font-extrabold italic text-white tracking-widest px-2">2026</span>
+                        <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-yellow-500"></div>
+                    </div>
+                </div>
+
+                <p class="max-w-2xl mx-auto text-xs sm:text-sm font-bold text-yellow-400 uppercase tracking-widest mb-3">
+                    "Sportivitas, Inovasi, dan Energi Generasi Inspiratif"
+                </p>
+                <p class="max-w-xl mx-auto text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Keseruan Class Meeting SMK Assalaam Bandung 2026. Klasemen kini menggunakan format olimpiade di mana peringkat dihitung dari raihan emas terbanyak.
+                </p>
+            </div>
+
+            <!-- Department Battles Analytics Widget (RPL vs TKR vs TSM) -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i data-lucide="swords" class="text-yellow-500"></i> Klasemen Medali Berdasarkan Jurusan
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="department-stats-container">
+                    <!-- Dynamic rendering by JS -->
+                </div>
+            </div>
+
+            <!-- Top 3 Olympic Podium Cards -->
+            <div class="space-y-4 pt-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-extrabold text-white">Podium Puncak Olimpiade</h2>
+                        <p class="text-slate-400 text-xs">Tiga kelas dengan dominasi medali emas tertinggi</p>
+                    </div>
+                    <button onclick="switchTab('klasemen')" class="text-xs text-yellow-400 hover:text-yellow-300 font-semibold flex items-center gap-1 hover:underline">
+                        Lihat Seluruh Kelas <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Olympic Podium Elements -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end pt-10 pb-4">
+                    <!-- Rank 2 (Silver) -->
+                    <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 text-center order-2 md:order-1 relative mt-12 md:mt-0 flex flex-col items-center">
+                        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-slate-950 border-4 border-slate-400 rounded-full flex items-center justify-center shadow-lg">
+                            <span class="text-2xl">🥈</span>
+                        </div>
+                        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mt-4">Peringkat 2</span>
+                        <h3 class="text-xl font-bold text-white mt-1" id="home-podium-2-name">XI TSM 1</h3>
+                        <p class="text-xs text-slate-400">Teknik Sepeda Motor</p>
+                        <!-- Medals count -->
+                        <div class="flex gap-2.5 mt-3">
+                            <span class="text-xs bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded font-extrabold" id="home-podium-2-gold">2🥇</span>
+                            <span class="text-xs bg-slate-400/10 text-slate-300 px-2 py-0.5 rounded font-extrabold" id="home-podium-2-silver">0🥈</span>
+                            <span class="text-xs bg-amber-700/10 text-amber-500 px-2 py-0.5 rounded font-extrabold" id="home-podium-2-bronze">0🥉</span>
+                        </div>
+                        <div class="mt-4 text-[11px] text-slate-500 font-semibold" id="home-podium-2-points">
+                            Total: 6.0 Poin
+                        </div>
+                    </div>
+
+                    <!-- Rank 1 (Gold) -->
+                    <div class="bg-gradient-to-b from-yellow-500/10 to-transparent border-2 border-yellow-500/40 rounded-3xl p-8 text-center order-1 md:order-2 relative transform md:scale-105 shadow-xl flex flex-col items-center">
+                        <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 border-4 border-slate-950 rounded-full flex items-center justify-center shadow-2xl">
+                            <span class="text-3xl">🥇</span>
+                        </div>
+                        <span class="text-[10px] text-yellow-400 uppercase font-bold tracking-wider mt-6">PEMIMPIN UMUM (OLIMPIADE)</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1" id="home-podium-1-name">X TKR 2</h3>
+                        <p class="text-xs text-slate-300">Teknik Kendaraan Ringan</p>
+                        <!-- Medals count -->
+                        <div class="flex gap-3 mt-4">
+                            <span class="text-sm bg-yellow-500 text-slate-950 px-2.5 py-0.5 rounded-full font-black" id="home-podium-1-gold">2🥇</span>
+                            <span class="text-sm bg-slate-400/20 text-slate-200 px-2.5 py-0.5 rounded-full font-black" id="home-podium-1-silver">1🥈</span>
+                            <span class="text-sm bg-amber-700/20 text-amber-400 px-2.5 py-0.5 rounded-full font-black" id="home-podium-1-bronze">0🥉</span>
+                        </div>
+                        <div class="mt-4 text-xs text-yellow-400 font-extrabold" id="home-podium-1-points">
+                            Total: 8.0 Poin
+                        </div>
+                    </div>
+
+                    <!-- Rank 3 (Bronze) -->
+                    <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 text-center order-3 relative mt-12 md:mt-0 flex flex-col items-center">
+                        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-slate-950 border-4 border-amber-600 rounded-full flex items-center justify-center shadow-lg">
+                            <span class="text-2xl">🥉</span>
+                        </div>
+                        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mt-4">Peringkat 3</span>
+                        <h3 class="text-xl font-bold text-white mt-1" id="home-podium-3-name">X RPL 2</h3>
+                        <p class="text-xs text-slate-400">Rekayasa Perangkat Lunak</p>
+                        <!-- Medals count -->
+                        <div class="flex gap-2.5 mt-3">
+                            <span class="text-xs bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded font-extrabold" id="home-podium-3-gold">0🥇</span>
+                            <span class="text-xs bg-slate-400/10 text-slate-300 px-2 py-0.5 rounded font-extrabold" id="home-podium-3-silver">1🥈</span>
+                            <span class="text-xs bg-amber-700/10 text-amber-500 px-2 py-0.5 rounded font-extrabold" id="home-podium-3-bronze">1🥉</span>
+                        </div>
+                        <div class="mt-4 text-[11px] text-slate-500 font-semibold" id="home-podium-3-points">
+                            Total: 3.0 Poin
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: KLASEMEN LIVE -->
+        <section id="section-klasemen" class="hidden space-y-6 animate-fade-in">
+            <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-white flex items-center gap-2">
+                        <i data-lucide="trophy" class="text-yellow-400"></i> Klasemen Resmi Sinergi 2026
+                    </h2>
+                    <p class="text-xs text-slate-400">Metode Penilaian Olimpiade (Urutan Emas, Perak, Perunggu, lalu Poin)</p>
+                </div>
+                
+                <!-- Layout and Filtering Controls -->
+                <div class="flex flex-wrap items-center gap-3">
+                    
+                    <!-- Layout Switcher -->
+                    <div class="flex items-center bg-slate-900/85 p-1 rounded-xl border border-slate-800">
+                        <button onclick="changeLayout('table')" id="layout-btn-table" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-white flex items-center gap-1.5">
+                            <i data-lucide="table-properties" class="w-3.5 h-3.5"></i> <span>Tabel</span>
+                        </button>
+                        <button onclick="changeLayout('grid')" id="layout-btn-grid" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-1.5">
+                            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> <span>Kartu</span>
+                        </button>
+                        <button onclick="changeLayout('matrix')" id="layout-btn-matrix" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-1.5">
+                            <i data-lucide="grid-3x3" class="w-3.5 h-3.5"></i> <span>Matriks</span>
+                        </button>
+                    </div>
+
+                    <!-- Department Filters -->
+                    <div class="flex items-center bg-slate-900/85 p-1 rounded-xl border border-slate-800">
+                        <button onclick="setFilter('all')" id="filter-all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-sinergiYellow text-slate-950">Semua</button>
+                        <button onclick="setFilter('RPL')" id="filter-RPL" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white">RPL</button>
+                        <button onclick="setFilter('TKR')" id="filter-TKR" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white">TKR</button>
+                        <button onclick="setFilter('TSM')" id="filter-TSM" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white">TSM</button>
+                    </div>
+
+                    <!-- Grade Filters -->
+                    <div class="flex items-center bg-slate-900/85 p-1 rounded-xl border border-slate-800">
+                        <button onclick="setGradeFilter('all')" id="gfilter-all" class="gfilter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-sinergiYellow text-slate-950">Semua Kelas</button>
+                        <button onclick="setGradeFilter('X')" id="gfilter-X" class="gfilter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white">Kelas X</button>
+                        <button onclick="setGradeFilter('XI')" id="gfilter-XI" class="gfilter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white">Kelas XI</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 1: TABLE LAYOUT -->
+            <div id="view-table" class="bg-slate-900/40 border border-slate-800/80 rounded-2xl overflow-hidden shadow-2xl">
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-950/80 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800 font-extrabold">
+                                <th class="py-4 px-4 text-center w-20">Peringkat</th>
+                                <th class="py-4 px-6 min-w-[140px]">Nama Kelas</th>
+                                <th class="py-4 px-4 text-center w-28 bg-yellow-500/5 text-yellow-400">🥇 Emas</th>
+                                <th class="py-4 px-4 text-center w-28 bg-slate-400/5 text-slate-300">🥈 Perak</th>
+                                <th class="py-4 px-4 text-center w-28 bg-amber-700/5 text-amber-500">🥉 Perunggu</th>
+                                <th class="py-4 px-4 text-center w-32 border-l border-slate-800/40">Total Medali</th>
+                                <th class="py-4 px-6 text-center font-black text-sinergiYellow bg-yellow-400/5 w-32">Total Poin</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-rows" class="divide-y divide-slate-800/60 text-slate-200">
+                            <!-- Injected by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- VIEW 2: GRID CARDS LAYOUT -->
+            <div id="view-grid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Injected by JavaScript -->
+            </div>
+
+            <!-- VIEW 3: MATRIX LAYOUT -->
+            <div id="view-matrix" class="hidden bg-slate-900/40 border border-slate-800/80 rounded-2xl overflow-hidden shadow-2xl">
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-950/80 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800 font-extrabold text-center">
+                                <th class="py-4 px-6 text-left min-w-[140px]">Kelas</th>
+                                <th class="py-4 px-3 min-w-[100px]">Solo Vocal</th>
+                                <th class="py-4 px-3 min-w-[100px]">Ranking 1</th>
+                                <th class="py-4 px-3 min-w-[100px]">Estafet</th>
+                                <th class="py-4 px-3 min-w-[100px]">Futsal Pa</th>
+                                <th class="py-4 px-3 min-w-[110px] bg-pink-950/15">Futsal Pi (RPL)</th>
+                                <th class="py-4 px-3 min-w-[100px]">ML</th>
+                                <th class="py-4 px-3 min-w-[100px]">FF</th>
+                                <th class="py-4 px-3 min-w-[100px]">eFootball</th>
+                                <th class="py-4 px-4 bg-yellow-400/5 w-24">Medali (E-P-P)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="matrix-rows" class="divide-y divide-slate-800/60 text-slate-200">
+                            <!-- Injected by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Empty Search/Filter State -->
+            <div id="klasemen-empty" class="hidden py-16 text-center text-slate-500">
+                <i data-lucide="filter-x" class="w-12 h-12 mx-auto text-slate-600 mb-2 animate-pulse"></i>
+                <p class="font-semibold text-sm">Tidak ada kelas yang sesuai dengan kombinasi filter terpilih.</p>
+            </div>
+
+            <!-- Caption Helper Legend -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-[11px] text-slate-400 bg-slate-900/20 p-4 rounded-xl border border-slate-800/50">
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-blue-500"></span> Futsal Pa: Futsal Putra 3v3</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-pink-500"></span> Futsal Pi: Futsal Putri 3v3 (Khusus RPL)</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-purple-500"></span> ML: Mobile Legends Esports</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-orange-500"></span> FF: Clash Squad Free Fire</span>
+            </div>
+        </section>
+
+        <!-- SECTION 3: DETAIL CABANG LOMBA -->
+        <section id="section-cabang" class="hidden space-y-6 animate-fade-in">
+            <div>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-white flex items-center gap-2">
+                    <i data-lucide="award" class="text-yellow-400"></i> Detail Kompetisi & Pembobotan Poin
+                </h2>
+                <p class="text-xs text-slate-400">Informasi lengkap seluruh kategori kompetisi di Sinergi 2026</p>
+            </div>
+
+            <!-- Grid Cards of Competitions -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Solo Vocal -->
+                <div class="bg-slate-900/30 p-5 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/25">Seni</span>
+                            <span class="text-slate-500"><i data-lucide="mic-2" class="w-5 h-5"></i></span>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Solo Vocal</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Menampilkan bakat tarik suara individu perwakilan kelas dalam membawakan lagu pilihan.</p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Poin Klasemen (Cadangan):</span>
+                        <div class="flex gap-2 text-xs font-bold">
+                            <span class="text-yellow-400">🥇 3pt</span>
+                            <span class="text-slate-300">🥈 2pt</span>
+                            <span class="text-amber-600">🥉 1pt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ranking 1 -->
+                <div class="bg-slate-900/30 p-5 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/25">Akademik</span>
+                            <span class="text-slate-500"><i data-lucide="help-circle" class="w-5 h-5"></i></span>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Ranking 1</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Asah wawasan dan kecepatan menjawab kuis interaktif seputar sejarah sekolah dan pengetahuan umum.</p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Poin Klasemen (Cadangan):</span>
+                        <div class="flex gap-2 text-xs font-bold">
+                            <span class="text-yellow-400">🥇 3pt</span>
+                            <span class="text-slate-300">🥈 2pt</span>
+                            <span class="text-amber-600">🥉 1pt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estafet -->
+                <div class="bg-slate-900/30 p-5 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-red-500/10 text-red-400 border border-red-500/25">Fun Games</span>
+                            <span class="text-slate-500"><i data-lucide="hourglass" class="w-5 h-5"></i></span>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Estafet</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Kompetisi fisik berkelompok yang menguji ketangkasan, koordinasi tim, dan kecepatan.</p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Poin Klasemen (Cadangan):</span>
+                        <div class="flex gap-2 text-xs font-bold">
+                            <span class="text-yellow-400">🥇 3pt</span>
+                            <span class="text-slate-300">🥈 2pt</span>
+                            <span class="text-amber-600">🥉 1pt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Futsal Putra 3v3 -->
+                <div class="bg-slate-900/30 p-5 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/25">Olahraga</span>
+                            <span class="text-slate-500"><i data-lucide="footprints" class="w-5 h-5"></i></span>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Futsal Putra 3v3</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Pertandingan sepak bola mini di lapangan kecil dengan ritme cepat dan formasi dinamis.</p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Poin Klasemen (Cadangan):</span>
+                        <div class="flex gap-2 text-xs font-bold">
+                            <span class="text-yellow-400">🥇 3pt</span>
+                            <span class="text-slate-300">🥈 2pt</span>
+                            <span class="text-amber-600">🥉 1pt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Futsal Putri 3v3 (Special RPL - Bobot Poin 1.5, 1.0, 0.5) -->
+                <div class="bg-yellow-500/5 p-5 rounded-2xl border-2 border-yellow-500/30 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -top-12 -right-12 w-24 h-24 bg-yellow-500/10 rounded-full blur-xl"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] uppercase font-extrabold tracking-wider px-2 py-0.5 rounded bg-pink-500/15 text-pink-400 border border-pink-500/20">Khusus RPL</span>
+                            <span class="text-yellow-400"><i data-lucide="sparkles" class="w-5 h-5"></i></span>
+                        </div>
+                        <h3 class="font-bold text-white text-base flex items-center gap-1.5">Futsal Putri 3v3</h3>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">Kompetisi eksklusif rumpun RPL. Memiliki penyesuaian nilai medali poin agar klasemen tetap adil bagi jurusan TKR & TSM.</p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-850">
+                        <span class="text-[10px] text-yellow-400 uppercase font-bold block mb-1">Aturan Poin Adil (Skala Baru):</span>
+                        <div class="flex gap-2 text-xs font-extrabold">
+                            <span class="text-yellow-400">🥇 1.5pt</span>
+                            <span class="text-slate-300">🥈 1.0pt</span>
+                            <span class="text-amber-600">🥉 0.5pt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Legends -->
+                <div class="bg-slate-900/30 p-5 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/25">Esports</span>
+                            <span class="text-slate-500"><i data-lucide="gamepad-2" class="w-5 h-5"></i></span>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Mobile Legends</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Turnamen esports 5v5 di Land of Dawn. Strategi drafting, sinergi taktik, dan adu mekanik makro.</p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Poin Klasemen (Cadangan):</span>
+                        <div class="flex gap-2 text-xs font-bold">
+                            <span class="text-yellow-400">🥇 3pt</span>
+                            <span class="text-slate-300">🥈 2pt</span>
+                            <span class="text-amber-600">🥉 1pt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clash Squad Free Fire -->
+                <div class="bg-slate-900/30 p-5 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/25">Esports</span>
+                            <span class="text-slate-500"><i data-lucide="target" class="w-5 h-5"></i></span>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Clash Squad (FF)</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Pertempuran taktis format Clash Squad 4v4. Menguji refleks menembak dan kecepatan memasang gloo wall.</p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Poin Klasemen (Cadangan):</span>
+                        <div class="flex gap-2 text-xs font-bold">
+                            <span class="text-yellow-400">🥇 3pt</span>
+                            <span class="text-slate-300">🥈 2pt</span>
+                            <span class="text-amber-600">🥉 1pt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- eFootball -->
+                <div class="bg-slate-900/30 p-5 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/25">Esports</span>
+                            <span class="text-slate-500"><i data-lucide="tv" class="w-5 h-5"></i></span>
+                        </div>
+                        <h3 class="font-bold text-white text-base">eFootball</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Turnamen simulasi sepak bola console/mobile bergengsi yang menantang kecerdasan taktik sepak bola.</p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Poin Klasemen (Cadangan):</span>
+                        <div class="flex gap-2 text-xs font-bold">
+                            <span class="text-yellow-400">🥇 3pt</span>
+                            <span class="text-slate-300">🥈 2pt</span>
+                            <span class="text-amber-600">🥉 1pt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <p class="text-xs text-slate-400">&copy; 2026 **SINERGI 2026** — SMK Assalaam Bandung.</p>
+                <p class="text-[10px] text-slate-500 mt-1">Sinergi, Sportivitas, Inovasi, dan Energi Generasi Inspiratif</p>
+            </div>
+            <div class="flex items-center gap-4 text-slate-400 text-xs">
+                <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i> Penilaian Medali Olimpiade Aktif</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App State and Rendering Script -->
+    <script>
+        // Official Competitions Weights Configuration
+        const COMPETITIONS = {
+            vocal: { name: "Solo Vocal", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } },
+            ranking1: { name: "Ranking 1", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } },
+            estafet: { name: "Estafet", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } },
+            futsalPa: { name: "Futsal Putra", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } },
+            futsalPi: { name: "Futsal Putri", isGeneral: false, weight: { gold: 1.5, silver: 1.0, bronze: 0.5 } }, // New Futsal Putri scale
+            ml: { name: "Mobile Legends", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } },
+            ff: { name: "Clash Squad FF", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } },
+            efootball: { name: "eFootball", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } }
+        };
+
+        // Official Standings Raw Data containing achievements per class
+        const STANDINGS_RAW = [
+            {
+                name: "X TKR 2", grade: "X", major: "TKR",
+                achievements: {
+                    vocal: "silver",
+                    ranking1: "gold",
+                    estafet: "gold"
+                }
+            },
+            {
+                name: "XI TSM 1", grade: "XI", major: "TSM",
+                achievements: {
+                    vocal: "gold",
+                    efootball: "gold"
+                }
+            },
+            {
+                name: "X RPL 2", grade: "X", major: "RPL",
+                achievements: {
+                    ranking1: "silver",
+                    estafet: "bronze"
+                }
+            },
+            {
+                name: "XI TKR 2", grade: "XI", major: "TKR",
+                achievements: {
+                    estafet: "silver",
+                    efootball: "bronze"
+                }
+            },
+            {
+                name: "X TKR 1", grade: "X", major: "TKR",
+                achievements: {
+                    efootball: "silver"
+                }
+            },
+            {
+                name: "XI RPL 1", grade: "XI", major: "RPL",
+                achievements: {
+                    vocal: "bronze"
+                }
+            },
+            {
+                name: "XI TKR 1", grade: "XI", major: "TKR",
+                achievements: {
+                    ranking1: "bronze"
+                }
+            },
+            { name: "X RPL 1", grade: "X", major: "RPL", achievements: {} },
+            { name: "X TSM 1", grade: "X", major: "TSM", achievements: {} },
+            { name: "X TSM 2", grade: "X", major: "TSM", achievements: {} },
+            { name: "XI RPL 2", grade: "XI", major: "RPL", achievements: {} },
+            { name: "XI RPL 3", grade: "XI", major: "RPL", achievements: {} }
+        ];
+
+        // Active State Filter settings
+        let activeFilter = 'all'; // all, RPL, TKR, TSM
+        let activeGradeFilter = 'all'; // all, X, XI
+        let activeLayout = 'table'; // table, grid, matrix
+
+        // Processed data storage
+        let processedClasses = [];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            calculateOlympicStandings();
+            renderDashboardWidgets();
+            renderStandings();
+            lucide.createIcons();
+        });
+
+        // Calculate Medals and Points dynamically for Olympic Standard Sorting
+        function calculateOlympicStandings() {
+            processedClasses = STANDINGS_RAW.map(cls => {
+                let goldCount = 0;
+                let silverCount = 0;
+                let bronzeCount = 0;
+                let totalPoints = 0;
+
+                Object.entries(cls.achievements).forEach(([compId, medalType]) => {
+                    const comp = COMPETITIONS[compId];
+                    if (!comp) return;
+
+                    if (medalType === 'gold') {
+                        goldCount++;
+                        totalPoints += comp.weight.gold;
+                    } else if (medalType === 'silver') {
+                        silverCount++;
+                        totalPoints += comp.weight.silver;
+                    } else if (medalType === 'bronze') {
+                        bronzeCount++;
+                        totalPoints += comp.weight.bronze;
+                    }
+                });
+
+                return {
+                    ...cls,
+                    gold: goldCount,
+                    silver: silverCount,
+                    bronze: bronzeCount,
+                    totalMedals: goldCount + silverCount + bronzeCount,
+                    totalPoints: totalPoints
+                };
+            });
+
+            // 1. Sort based on Olympic Standard: Gold -> Silver -> Bronze -> Total Points -> Class Name
+            processedClasses.sort((a, b) => {
+                if (b.gold !== a.gold) {
+                    return b.gold - a.gold;
+                }
+                if (b.silver !== a.silver) {
+                    return b.silver - a.silver;
+                }
+                if (b.bronze !== a.bronze) {
+                    return b.bronze - a.bronze;
+                }
+                if (b.totalPoints !== a.totalPoints) {
+                    return b.totalPoints - a.totalPoints;
+                }
+                return a.name.localeCompare(b.name);
+            });
+
+            // Update top 3 podium elements in home view dynamically based on Olympic ranks
+            updateHomePodiums();
+        }
+
+        // Render widgets like department battle stats
+        function renderDashboardWidgets() {
+            const stats = {
+                RPL: { gold: 0, silver: 0, bronze: 0, total: 0 },
+                TKR: { gold: 0, silver: 0, bronze: 0, total: 0 },
+                TSM: { gold: 0, silver: 0, bronze: 0, total: 0 }
+            };
+
+            processedClasses.forEach(c => {
+                if (stats[c.major]) {
+                    stats[c.major].gold += c.gold;
+                    stats[c.major].silver += c.silver;
+                    stats[c.major].bronze += c.bronze;
+                    stats[c.major].total += c.totalMedals;
+                }
+            });
+
+            const container = document.getElementById('department-stats-container');
+            container.innerHTML = '';
+
+            Object.entries(stats).forEach(([dept, data]) => {
+                // Determine decorative elements for each major
+                let cardTheme = 'border-slate-800 bg-slate-900/30';
+                let accentColor = 'text-blue-400';
+                if (dept === 'RPL') {
+                    cardTheme = 'border-pink-500/20 bg-pink-500/[0.02]';
+                    accentColor = 'text-pink-400';
+                } else if (dept === 'TKR') {
+                    cardTheme = 'border-blue-500/20 bg-blue-500/[0.02]';
+                    accentColor = 'text-blue-400';
+                } else if (dept === 'TSM') {
+                    cardTheme = 'border-yellow-500/20 bg-yellow-500/[0.02]';
+                    accentColor = 'text-yellow-400';
+                }
+
+                const widget = document.createElement('div');
+                widget.className = `p-5 rounded-2xl border ${cardTheme} flex flex-col justify-between`;
+                widget.innerHTML = `
+                    <div>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 block mb-1">Akumulasi Medali</span>
+                        <h4 class="text-xl font-extrabold ${accentColor} flex items-center gap-1.5">
+                            Jurusan ${dept}
+                        </h4>
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-3 gap-2 mt-4 text-center">
+                            <div class="bg-yellow-500/5 border border-yellow-500/10 p-2 rounded-xl">
+                                <span class="text-lg block">🥇</span>
+                                <span class="text-sm font-bold text-white">${data.gold}</span>
+                            </div>
+                            <div class="bg-slate-400/5 border border-slate-400/10 p-2 rounded-xl">
+                                <span class="text-lg block">🥈</span>
+                                <span class="text-sm font-bold text-white">${data.silver}</span>
+                            </div>
+                            <div class="bg-amber-700/5 border border-amber-700/10 p-2 rounded-xl">
+                                <span class="text-lg block">🥉</span>
+                                <span class="text-sm font-bold text-white">${data.bronze}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/40 flex items-center justify-between text-xs text-slate-400">
+                        <span>Total Medali Won:</span>
+                        <span class="font-extrabold text-white text-sm">${data.total} Medali</span>
+                    </div>
+                `;
+                container.appendChild(widget);
+            });
+        }
+
+        // Set Home View Podium dynamically from absolute computed standings
+        function updateHomePodiums() {
+            // Rank 1
+            const p1 = processedClasses[0] || { name: "-", major: "-", gold: 0, silver: 0, bronze: 0, totalPoints: 0 };
+            document.getElementById('home-podium-1-name').innerText = p1.name;
+            document.getElementById('home-podium-1-gold').innerText = `${p1.gold}🥇`;
+            document.getElementById('home-podium-1-silver').innerText = `${p1.silver}🥈`;
+            document.getElementById('home-podium-1-bronze').innerText = `${p1.bronze}🥉`;
+            document.getElementById('home-podium-1-points').innerText = `Total: ${p1.totalPoints.toFixed(1).replace('.0', '')} Poin`;
+
+            // Rank 2
+            const p2 = processedClasses[1] || { name: "-", major: "-", gold: 0, silver: 0, bronze: 0, totalPoints: 0 };
+            document.getElementById('home-podium-2-name').innerText = p2.name;
+            document.getElementById('home-podium-2-gold').innerText = `${p2.gold}🥇`;
+            document.getElementById('home-podium-2-silver').innerText = `${p2.silver}🥈`;
+            document.getElementById('home-podium-2-bronze').innerText = `${p2.bronze}🥉`;
+            document.getElementById('home-podium-2-points').innerText = `Total: ${p2.totalPoints.toFixed(1).replace('.0', '')} Poin`;
+
+            // Rank 3
+            const p3 = processedClasses[2] || { name: "-", major: "-", gold: 0, silver: 0, bronze: 0, totalPoints: 0 };
+            document.getElementById('home-podium-3-name').innerText = p3.name;
+            document.getElementById('home-podium-3-gold').innerText = `${p3.gold}🥇`;
+            document.getElementById('home-podium-3-silver').innerText = `${p3.silver}🥈`;
+            document.getElementById('home-podium-3-bronze').innerText = `${p3.bronze}🥉`;
+            document.getElementById('home-podium-3-points').innerText = `Total: ${p3.totalPoints.toFixed(1).replace('.0', '')} Poin`;
+        }
+
+        // Master Tab switcher
+        function switchTab(tabId) {
+            document.getElementById('section-home').classList.add('hidden');
+            document.getElementById('section-klasemen').classList.add('hidden');
+            document.getElementById('section-cabang').classList.add('hidden');
+
+            document.getElementById(`section-${tabId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-3 py-2 sm:px-5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg text-slate-400 hover:text-white transition-all duration-200";
+            });
+
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.className = "tab-btn px-3 py-2 sm:px-5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 bg-sinergiYellow text-sinergiBlue-dark shadow-lg shadow-sinergiYellow/10";
+        }
+
+        // Layout Switcher
+        function changeLayout(layoutId) {
+            activeLayout = layoutId;
+
+            document.getElementById('view-table').classList.add('hidden');
+            document.getElementById('view-grid').classList.add('hidden');
+            document.getElementById('view-matrix').classList.add('hidden');
+
+            document.getElementById(`view-${layoutId}`).classList.remove('hidden');
+
+            document.querySelectorAll('[id^="layout-btn-"]').forEach(btn => {
+                btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-1.5";
+            });
+
+            const activeBtn = document.getElementById(`layout-btn-${layoutId}`);
+            activeBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-white flex items-center gap-1.5 shadow-md";
+
+            renderStandings();
+        }
+
+        // Render main standings table/grid/matrix dynamically with active filters
+        function renderStandings() {
+            let filtered = [...processedClasses];
+
+            if (activeFilter !== 'all') {
+                filtered = filtered.filter(item => item.major === activeFilter);
+            }
+            if (activeGradeFilter !== 'all') {
+                filtered = filtered.filter(item => item.grade === activeGradeFilter);
+            }
+
+            const emptyState = document.getElementById('klasemen-empty');
+            
+            // Check empty state
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                document.getElementById('view-table').classList.add('hidden');
+                document.getElementById('view-grid').classList.add('hidden');
+                document.getElementById('view-matrix').classList.add('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+                document.getElementById(`view-${activeLayout}`).classList.remove('hidden');
+            }
+
+            // Render according to active layout
+            if (activeLayout === 'table') {
+                renderTableView(filtered);
+            } else if (activeLayout === 'grid') {
+                renderGridView(filtered);
+            } else if (activeLayout === 'matrix') {
+                renderMatrixView(filtered);
+            }
+            
+            lucide.createIcons();
+        }
+
+        // LAYOUT 1: TABLE VIEW RENDERER
+        function renderTableView(data) {
+            const tbody = document.getElementById('table-rows');
+            tbody.innerHTML = '';
+
+            data.forEach((row) => {
+                // Determine absolute medal-sorted rank in the whole SMK Assalaam list
+                const absoluteRank = processedClasses.findIndex(item => item.name === row.name) + 1;
+                let rankBadge = '';
+
+                if (absoluteRank === 1) {
+                    rankBadge = '<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-yellow-500 text-slate-950 font-black text-xs shadow-md shadow-yellow-500/20">🥇 1</span>';
+                } else if (absoluteRank === 2) {
+                    rankBadge = '<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-400 text-slate-950 font-black text-xs shadow-sm">🥈 2</span>';
+                } else if (absoluteRank === 3) {
+                    rankBadge = '<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-600 text-white font-black text-xs shadow-sm">🥉 3</span>';
+                } else {
+                    rankBadge = `<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-800 text-slate-400 font-bold text-xs">${absoluteRank}</span>`;
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-850/40 transition-colors duration-150';
+                tr.innerHTML = `
+                    <td class="py-3.5 px-4 text-center">${rankBadge}</td>
+                    <td class="py-3.5 px-6 font-bold text-white">
+                        <span class="block text-sm">${row.name}</span>
+                        <span class="text-[9px] uppercase tracking-wider text-slate-500 font-semibold">${row.major} • Kelas ${row.grade}</span>
+                    </td>
+                    <td class="py-3.5 px-4 text-center text-sm font-extrabold bg-yellow-500/5 text-yellow-400">${row.gold}</td>
+                    <td class="py-3.5 px-4 text-center text-sm font-extrabold bg-slate-400/5 text-slate-300">${row.silver}</td>
+                    <td class="py-3.5 px-4 text-center text-sm font-extrabold bg-amber-700/5 text-amber-500">${row.bronze}</td>
+                    <td class="py-3.5 px-4 text-center text-xs font-bold text-slate-400 border-l border-slate-800/40">${row.totalMedals} Medali</td>
+                    <td class="py-3.5 px-6 text-center bg-yellow-400/5">
+                        <span class="inline-block px-2.5 py-0.5 bg-yellow-400/10 border border-yellow-500/25 text-yellow-400 rounded-md font-black text-xs sm:text-sm min-w-[45px]">
+                            ${row.totalPoints.toFixed(1).replace('.0', '')}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // LAYOUT 2: GRID CARDS VIEW RENDERER
+        function renderGridView(data) {
+            const container = document.getElementById('view-grid');
+            container.innerHTML = '';
+
+            data.forEach((row) => {
+                const absoluteRank = processedClasses.findIndex(item => item.name === row.name) + 1;
+                
+                // Achievement list generation
+                let achievementBadges = '';
+                if (Object.keys(row.achievements).length === 0) {
+                    achievementBadges = '<p class="text-[10px] text-slate-600 italic">Belum mengamankan medali di cabang lomba.</p>';
+                } else {
+                    Object.entries(row.achievements).forEach(([compId, medalType]) => {
+                        const comp = COMPETITIONS[compId];
+                        if (!comp) return;
+
+                        let badgeColor = '';
+                        let medalEmoji = '';
+                        if (medalType === 'gold') {
+                            badgeColor = 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20';
+                            medalEmoji = '🥇';
+                        } else if (medalType === 'silver') {
+                            badgeColor = 'bg-slate-400/10 text-slate-300 border-slate-400/20';
+                            medalEmoji = '🥈';
+                        } else if (medalType === 'bronze') {
+                            badgeColor = 'bg-amber-700/10 text-amber-500 border-amber-700/20';
+                            medalEmoji = '🥉';
+                        }
+
+                        achievementBadges += `
+                            <span class="inline-flex items-center gap-1 px-2.5 py-1 border rounded-lg text-[10px] font-bold ${badgeColor}">
+                                <span>${medalEmoji}</span> <span>${comp.name}</span>
+                            </span>
+                        `;
+                    });
+                }
+
+                // Ribbon / Medal visuals based on rank
+                let medalVisual = 'bg-slate-950 border border-slate-800';
+                if (absoluteRank === 1) medalVisual = 'bg-yellow-500/10 border border-yellow-500/35 medal-glow-gold';
+                else if (absoluteRank === 2) medalVisual = 'bg-slate-400/10 border border-slate-400/35 medal-glow-silver';
+                else if (absoluteRank === 3) medalVisual = 'bg-amber-600/10 border border-amber-600/35 medal-glow-bronze';
+
+                const card = document.createElement('div');
+                card.className = `p-5 rounded-2xl ${medalVisual} flex flex-col justify-between space-y-4`;
+                card.innerHTML = `
+                    <div>
+                        <!-- Header with ranks and names -->
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-500">${row.major} • Kelas ${row.grade}</span>
+                                <h4 class="text-lg font-black text-white mt-0.5">${row.name}</h4>
+                            </div>
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-900 border border-slate-800 text-xs font-black text-sinergiYellow">
+                                #${absoluteRank}
+                            </span>
+                        </div>
+
+                        <!-- Medals Summary Row -->
+                        <div class="grid grid-cols-3 gap-2 mt-4 text-center border-b border-slate-850 pb-4">
+                            <div class="bg-yellow-500/5 p-1.5 rounded-lg border border-yellow-500/10">
+                                <span class="text-xs text-slate-400 block font-semibold">Emas</span>
+                                <span class="text-sm font-black text-yellow-400">${row.gold} 🥇</span>
+                            </div>
+                            <div class="bg-slate-400/5 p-1.5 rounded-lg border border-slate-400/10">
+                                <span class="text-xs text-slate-400 block font-semibold">Perak</span>
+                                <span class="text-sm font-black text-slate-300">${row.silver} 🥈</span>
+                            </div>
+                            <div class="bg-amber-700/5 p-1.5 rounded-lg border border-amber-700/10">
+                                <span class="text-xs text-slate-400 block font-semibold">Perunggu</span>
+                                <span class="text-sm font-black text-amber-500">${row.bronze} 🥉</span>
+                            </div>
+                        </div>
+
+                        <!-- Won Events listing -->
+                        <div class="mt-4 space-y-2">
+                            <span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Prestasi Medali:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${achievementBadges}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card footer with points -->
+                    <div class="pt-3 border-t border-slate-850 flex items-center justify-between text-xs text-slate-500">
+                        <span>Poin (Akumulasi):</span>
+                        <span class="font-extrabold text-yellow-400 bg-yellow-400/5 px-2 py-0.5 rounded border border-yellow-500/10">
+                            ${row.totalPoints.toFixed(1).replace('.0', '')} Poin
+                        </span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // LAYOUT 3: MATRIX VIEW RENDERER
+        function renderMatrixView(data) {
+            const tbody = document.getElementById('matrix-rows');
+            tbody.innerHTML = '';
+
+            data.forEach((row) => {
+                const absoluteRank = processedClasses.findIndex(item => item.name === row.name) + 1;
+                
+                // Build competition-specific status cells
+                let matrixCells = '';
+                Object.keys(COMPETITIONS).forEach(compId => {
+                    const achievement = row.achievements[compId];
+                    const isFutsalPiRPL = compId === 'futsalPi';
+
+                    // Non-RPL classes do not participate in Futsal Putri (Futsal Pi)
+                    if (isFutsalPiRPL && row.major !== 'RPL') {
+                        matrixCells += `<td class="py-3 px-1 text-center bg-pink-950/5 text-slate-700 font-bold">-</td>`;
+                        return;
+                    }
+
+                    if (achievement === 'gold') {
+                        matrixCells += `<td class="py-3 px-1 text-center text-base animate-pulse">🥇</td>`;
+                    } else if (achievement === 'silver') {
+                        matrixCells += `<td class="py-3 px-1 text-center text-base">🥈</td>`;
+                    } else if (achievement === 'bronze') {
+                        matrixCells += `<td class="py-3 px-1 text-center text-base">🥉</td>`;
+                    } else {
+                        matrixCells += `<td class="py-3 px-1 text-center text-xs text-slate-700 font-semibold">•</td>`;
+                    }
+                });
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-850/40 transition-colors';
+                tr.innerHTML = `
+                    <td class="py-3.5 px-6 font-bold text-white border-r border-slate-800/40">
+                        <span class="flex items-center gap-2">
+                            <span class="text-xs text-slate-500 font-mono w-5">#${absoluteRank}</span>
+                            <div>
+                                <span class="block text-sm">${row.name}</span>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 font-semibold">${row.major}</span>
+                            </div>
+                        </span>
+                    </td>
+                    ${matrixCells}
+                    <td class="py-3.5 px-4 text-center bg-yellow-400/5 border-l border-slate-800/40">
+                        <span class="text-xs font-extrabold text-slate-300">
+                            ${row.gold}-${row.silver}-${row.bronze}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Filter handlers
+        function setFilter(major) {
+            activeFilter = major;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white";
+            });
+            document.getElementById(`filter-${major}`).className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-sinergiYellow text-slate-950 shadow-md";
+            
+            renderStandings();
+        }
+
+        function setGradeFilter(grade) {
+            activeGradeFilter = grade;
+            document.querySelectorAll('.gfilter-btn').forEach(btn => {
+                btn.className = "gfilter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white";
+            });
+            document.getElementById(`gfilter-${grade}`).className = "gfilter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-sinergiYellow text-slate-950 shadow-md";
+            
+            renderStandings();
+        }
+    </script>
+</body>
+</html>
