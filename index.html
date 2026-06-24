@@ -321,6 +321,7 @@
                                 <th class="py-4 px-3 min-w-[100px]">ML</th>
                                 <th class="py-4 px-3 min-w-[100px]">FF</th>
                                 <th class="py-4 px-3 min-w-[100px]">eFootball</th>
+                                <th class="py-4 px-3 min-w-[100px]">Volly</th>
                                 <th class="py-4 px-4 bg-yellow-400/5 w-24">Medali (E-P-P)</th>
                             </tr>
                         </thead>
@@ -517,6 +518,26 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Volleyball -->
+                <div class="bg-slate-900/30 p-5 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-emerald-600/10 text-emerald-400 border border-emerald-600/25">Olahraga</span>
+                            <span class="text-slate-500"><i data-lucide="volleyball" class="w-5 h-5"></i></span>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Volly</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Pertandingan voli dinamis beregu 6v6 yang melatih ketangkasan dan kekompakan komunikasi antar pemain.</p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Poin Klasemen (Cadangan):</span>
+                        <div class="flex gap-2 text-xs font-bold">
+                            <span class="text-yellow-400">🥇 3pt</span>
+                            <span class="text-slate-300">🥈 2pt</span>
+                            <span class="text-amber-600">🥉 1pt</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -546,13 +567,12 @@
             futsalPi: { name: "Futsal Putri", isGeneral: false, weight: { gold: 1.5, silver: 1.0, bronze: 0.5 } }, // Futsal Putri 1.5, 1.0, 0.5
             ml: { name: "Mobile Legends", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } },
             ff: { name: "Clash Squad FF", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } },
-            efootball: { name: "eFootball", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } }
+            efootball: { name: "eFootball", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } },
+            volly: { name: "Volly", isGeneral: true, weight: { gold: 3.0, silver: 2.0, bronze: 1.0 } } // Volly Added
         };
 
         // Official Standings Raw Data containing achievements per class
-        // Diperbarui dengan hasil Free Fire (X TSM 1: Gold, X TKR 2: Silver, X TSM 2: Bronze)
-        // Serta hasil eFootball (XI TSM 1: Gold, X TKR 1: Silver, XI TKR 2: Bronze)
-        // Dan hasil Futsal Putri (X RPL 1: Gold, XI RPL 1: Silver, X RPL 2: Bronze)
+        // Diperbarui dengan hasil Volly (X TSM 1: Gold, XI TSM 1: Silver, XI TKR 1: Bronze)
         const STANDINGS_RAW = [
             {
                 name: "X TKR 2", grade: "X", major: "TKR",
@@ -560,26 +580,28 @@
                     vocal: "silver",
                     ranking1: "gold",
                     estafet: "gold",
-                    ff: "silver" // Juara 2 Free Fire
+                    ff: "silver"
                 }
             },
             {
                 name: "XI TSM 1", grade: "XI", major: "TSM",
                 achievements: {
                     vocal: "gold",
-                    efootball: "gold" // Juara 1 eFootball
+                    efootball: "gold",
+                    volly: "silver" // Juara 2 Volly
                 }
             },
             {
                 name: "X TSM 1", grade: "X", major: "TSM",
                 achievements: {
-                    ff: "gold" // Juara 1 Free Fire
+                    ff: "gold",
+                    volly: "gold" // Juara 1 Volly
                 }
             },
             {
                 name: "X RPL 1", grade: "X", major: "RPL",
                 achievements: {
-                    futsalPi: "gold" // Juara 1 Futsal Putri
+                    futsalPi: "gold"
                 }
             },
             {
@@ -587,39 +609,40 @@
                 achievements: {
                     ranking1: "silver",
                     estafet: "bronze",
-                    futsalPi: "bronze" // Juara 3 Futsal Putri
+                    futsalPi: "bronze"
                 }
             },
             {
                 name: "XI TKR 2", grade: "XI", major: "TKR",
                 achievements: {
                     estafet: "silver",
-                    efootball: "bronze" // Juara 3 eFootball
+                    efootball: "bronze"
                 }
             },
             {
                 name: "X TKR 1", grade: "X", major: "TKR",
                 achievements: {
-                    efootball: "silver" // Juara 2 eFootball
+                    efootball: "silver"
                 }
             },
             {
                 name: "XI RPL 1", grade: "XI", major: "RPL",
                 achievements: {
                     vocal: "bronze",
-                    futsalPi: "silver" // Juara 2 Futsal Putri
+                    futsalPi: "silver"
                 }
             },
             {
                 name: "XI TKR 1", grade: "XI", major: "TKR",
                 achievements: {
-                    ranking1: "bronze"
+                    ranking1: "bronze",
+                    volly: "bronze" // Juara 3 Volly
                 }
             },
             {
                 name: "X TSM 2", grade: "X", major: "TSM",
                 achievements: {
-                    ff: "bronze" // Juara 3 Free Fire
+                    ff: "bronze"
                 }
             },
             { name: "XI RPL 2", grade: "XI", major: "RPL", achievements: {} },
